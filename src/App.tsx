@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import { getDatabase, ref, child, get } from "firebase/database";
 import { database } from './firebase';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+
+import './Styles/sb-admin-2.min.css'
+import { Login } from 'Pages/Account';
+import { Admin } from 'Pages/Admin/Admin';
+import { PrivateRoute } from './Components';
 
 function App() {
   const dbRef = ref(database);
@@ -17,21 +23,13 @@ function App() {
   });
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App' id="wrapper">
+       <Router>
+          <Routes>
+            <Route path="/" element={<PrivateRoute><Login /></PrivateRoute>} />
+            {/* <Route path="/admin" element={<Admin />} /> */}
+          </Routes>
+      </Router>
     </div>
   );
 }
