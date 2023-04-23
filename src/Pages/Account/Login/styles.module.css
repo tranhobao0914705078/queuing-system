@@ -1,0 +1,114 @@
+.container {
+    width: 1440px;
+    height: 810px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* text-align: center; */
+    border-radius: 16px;
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    border: 1px solid #333;
+}
+  
+.login {
+    background-color: #F6F6F6;
+    padding: 20px;
+}
+
+.titleUsername{
+    position: absolute;
+    left: 20px;
+    top: 210px;
+    color: #000;
+}
+
+.titlePassword{
+    position: absolute;
+    left: 20px;
+    top: 295px;
+    color: #000;
+}
+
+.forgotPassword{
+    position: absolute;
+    left: 26px;
+    color: red;
+}
+
+.eyePass{
+    position: absolute;
+    left: 520px;
+    top: 329px;
+    cursor: pointer;
+}
+
+.eyePass:hover{
+    opacity: 0.8;
+}
+
+.btnLogin{
+    position: absolute;
+    gap: 8px;
+    margin: -80px 0;
+    top: 511px;
+    left: 215px;
+    width: 162px;
+    height: 40px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 24px 10px 24px;
+    background-color: #FF9138;
+}
+
+.btnLogin:hover{
+    text-decoration: none;
+    color: #333;
+}
+  
+.banner {
+    padding: 20px;
+    width: 848px;
+    height: 810px;
+    left: 592px;
+}
+
+.bannerImage{
+    float: left;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.titleBanner{
+    margin: 250px 0;
+}
+
+.system{
+    margin: 10px 235px;
+    color: #FF7506;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 51px;
+}
+
+.line{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 54px;
+    color: #FF7506;
+}
+
+/* ResetPassword */
+.logoResetPass{
+    background-size: cover;
+}

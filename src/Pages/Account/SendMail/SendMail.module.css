@@ -49,19 +49,27 @@
     opacity: 0.8;
 }
 
-.btnLogin{
-    position: absolute;
-    gap: 8px;
-    margin: -80px 0;
-    top: 511px;
-    left: 215px;
+.btnCancel{
+    margin: 0 10px;
     width: 162px;
     height: 40px;
-    color: #fff;
-    font-weight: 500;
     border-radius: 8px;
-    padding: 8px 24px 10px 24px;
-    background-color: #FF9138;
+    border: 1px solid  #FF9138;
+    color:  #FF9138;
+}
+
+.btnContinue{
+    width: 162px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color:  #FF9138;
+    color: #fff;
+}
+
+.btnContinue:hover, 
+.btnCancel:hover{
+    opacity: 0.8;
 }
   
 .banner {
@@ -71,32 +79,26 @@
     left: 592px;
 }
 
-.bannerImage{
-    float: left;
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
+.banner img{
+    width: 800px;
+    margin: 50px -50px;
 }
 
-.titleBanner{
-    margin: 250px 0;
+.title1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 33px;
+    color: #282739;
 }
 
-.system{
-    margin: 10px 235px;
-    color: #FF7506;
+.title2{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 400;
-    font-size: 34px;
-    line-height: 51px;
+    font-size: 18px;
+    line-height: 27px;
+    color: #37474F;
 }
 
-.line{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 54px;
-    color: #FF7506;
-}
+

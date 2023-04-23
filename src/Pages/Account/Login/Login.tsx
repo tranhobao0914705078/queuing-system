@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styles from './styles.module.css'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import bannerImg from './Image/banner.png';
-import logoImg from './Image/logo.png';
+import bannerImg from '../Image/banner.png';
+import logoImg from '../Image/logo.png';
 
 export const Login = () => {
     const [showPass, setShowPass] = useState(false);
-
+    
     const toggleShowPass = () => {
         setShowPass(!showPass);
     }
-
     const inputTypePassword = showPass ? 'text' : 'password';
     const eyePass = showPass ? faEye : faEyeSlash;
+
   return (
     <div className={styles.container}>
         <div className={styles.login}>
@@ -31,10 +32,11 @@ export const Login = () => {
                 </div>
                 <input type={inputTypePassword} name="password" id="password" className="form-control" placeholder='Mật Khẩu...'/>
             </div>
-            <a className={styles.forgotPassword} href="#">Quên mật khẩu?</a>
-            <a href="/admin" className={styles.btnLogin}>
+            <Link className={styles.forgotPassword} to="/send-mail">Quên mật khẩu?</Link>
+            {/* <a href="" className={styles.btnLogin} onClick={handleLogin}>
                 Đăng Nhập
-            </a>
+            </a> */}
+            <Link className={styles.btnLogin} to="/admin">Đăng Nhập</Link>
         </div>
         <div className={styles.banner}>
            <img 
