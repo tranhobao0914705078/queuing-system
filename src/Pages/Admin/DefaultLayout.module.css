@@ -1,0 +1,17 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    
+}
+
+.content{
+    width: 1680px;
+    height: 980px;
+    background-color: #F6F6F6;
+    margin: 5px 0;
+}

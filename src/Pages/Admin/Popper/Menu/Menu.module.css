@@ -1,0 +1,21 @@
+.titleSetting{
+    list-style: none;
+}
+
+.titleSetting li {
+    text-align: left;
+    margin: 5px -25px;
+    padding: 5px 0;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    list-style: none;
+    
+}
+
+.titleSetting li a{
+    color: #7E7D88;
+    text-decoration: none;
+}

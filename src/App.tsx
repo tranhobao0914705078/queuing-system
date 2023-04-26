@@ -6,12 +6,14 @@ import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 
 import './Styles/sb-admin-2.min.css'
 import { Login } from 'Pages/Account';
-import { Admin } from 'Pages/Admin/Dashboard/Admin';
+import { Admin } from 'Pages/Admin/AdminPage/Admin';
 import { PrivateRoute } from './Components';
 import { AccountRoute } from 'Components/AccountRoute';
 import { SendMail } from 'Pages/Account/SendMail/SendMail';
 import { ResetPassword } from 'Pages/Account/ResetPassword/ResetPassword';
 
+import { publicRoutes } from './Pages/routes';
+import  DefaultLayout  from './Pages/Admin/DefaultLayout';
 function App() {
   const dbRef = ref(database);
   get(child(dbRef, `users/1`)).then((snapshot) => {
@@ -36,6 +38,12 @@ function App() {
             <Route path="/admin" element={<AccountRoute><Admin /></AccountRoute>} />
             <Route path="/send-mail" element={<SendMail />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            {/* layout admin */}
+            {publicRoutes.map((route, index) => {
+              const Layout = DefaultLayout;
+              const Page = route.component;
+              return <Route key={index} path={route.path} element={<Layout><Page /></Layout>} />
+            })}
           </Routes>
       </Router>
     </div>

@@ -1,0 +1,179 @@
+.info{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.informationTitle{
+    text-align: left;
+    margin: 20px 20px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FF9138;
+}
+
+.infoDes{
+    margin: 20px 80px;
+    display: flex;
+}
+
+.infoDes .iconBell{
+    margin: 10px 30px;
+    color: #FFAC6A;
+}
+
+.infoUser{
+    display: flex;
+    margin: 2px 0;
+}
+
+.infoUser img{
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border: 50%;
+}
+
+.userName{
+    margin: 0px 5px;
+}
+
+.name{
+    margin: 15px 0;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #535261;
+}
+
+.welcome{
+    position: absolute;
+    top: 16px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #7E7D88;
+}
+
+.infoDetails{
+    position: absolute;
+    display: flex;
+    width: 1180px;
+    height: 400px;
+    top: 170px;
+    left: 260px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.imageUser{
+    width: 260px;
+    height: 100%;
+}
+
+.imageUser img{
+    width: 248px;
+    height: 248px;
+    object-fit: cover;
+    margin: 30px 0;
+}
+
+.imageUser h2{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    color: #282739;
+    margin: -20px 45px;
+    width: 240px;
+}
+
+.userRight{
+    display: flex;
+}
+
+.userRight label{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282739;
+}
+
+.userRight input{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #535261;
+    opacity: 0.5;
+}
+
+.inputUserLeft{
+    margin: 50px 20px;
+}
+
+.inputUserLeft input{
+    width: 384px;
+    height: 44px;
+    margin: 0 -109px;
+}
+
+.inputUserRight{
+    margin: 50px 20px;
+}
+
+.inputUserRight input{
+    width: 384px;
+    height: 44px;
+    margin: 0 85px;
+}
+
+.labelUser{
+    flex: 1;
+    text-align: left;
+    margin: -31px 0;
+}
+
+.labelUserRight{
+    position: absolute;
+    margin: -31px 282px;
+    left: 400px;
+}
+
+/* .inputUser label{
+    position: absolute;
+    top: 22px;
+    left: 282px;
+} */
+
+.formInput{
+    width: 384px;
+    height: 44px;
+    margin: 0 20px;
+}
+
+.iconCamera{
+    position: absolute;
+    left: 448px;
+    top: 369px;
+    width: 35px;
+    height: 100px;
+    z-index: 1;
+    color: #FF7506;
+}
+
+
+
