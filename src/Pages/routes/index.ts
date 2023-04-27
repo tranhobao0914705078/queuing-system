@@ -4,6 +4,7 @@ import { Information } from 'Pages/Admin/Information/Information';
 import { Dashboard } from 'Pages/Admin/Dashboard/Dashboard';
 import { AddItem } from 'Pages/Admin/Device/AddItem';
 import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
+import { ManageItem } from 'Pages/Admin/Device/ManageItem';
 const publicRoutes = [
     {
         path: '/',
@@ -20,6 +21,10 @@ const publicRoutes = [
     {
         path: '/details-device',
         component: DetailsDevice,
+    },
+    {
+        path: '/manage-device',
+        component: ManageItem,
     },
     {
         path: '/dashboard',

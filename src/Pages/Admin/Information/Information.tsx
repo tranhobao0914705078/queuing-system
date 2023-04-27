@@ -14,6 +14,7 @@ export const Information = () => {
         <div className={styles.userLeft}>
           <div className={styles.imageUser}>
             <img src={iconUser} alt="" />
+            <FontAwesomeIcon icon={faCamera} className={styles.iconCamera}/>
             <h2>Lê Quỳnh Ái Vân</h2>
           </div>
         </div>

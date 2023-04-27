@@ -69,7 +69,7 @@ export const Device = () => {
               <a href="" className={styles.linkUpdate}>Xem thêm</a>
             </td>
             <td className={styles.link}><Link to="/details-device">Chi tiết</Link></td>
-            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+            <td className={styles.linkUpdate}><Link to="/manage-device">Cập nhật</Link></td>
           </tr>
           <tr>
             <td>KIO_01</td>

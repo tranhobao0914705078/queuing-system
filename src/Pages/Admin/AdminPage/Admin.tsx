@@ -96,7 +96,7 @@ export const Admin = () => {
         <div className={styles.infoDes}>
             <FontAwesomeIcon icon={faBell} className={styles.iconBell}/>
             <div className={styles.infoUser}>
-              <img src={iconUser} alt="" />
+              <Link to={"/information"}><img src={iconUser} alt="avatar" /></Link>
               <div className={styles.userName}>
                 <p className={styles.welcome}>Xin chào</p>
                 <p className={styles.name}>Lê Quỳnh Ái Vân</p>

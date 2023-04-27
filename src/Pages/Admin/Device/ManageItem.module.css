@@ -44,7 +44,7 @@
 .content{
     position: absolute;
     width: 1152px;
-    height: 450px;
+    height: 550px;
     left: 250px;
     top: 165px;
     background: #FFFFFF;
@@ -84,26 +84,12 @@
     margin-left: 2px;
 }
 
-.useService .idDevice{
-    margin: 0 45px;
-    width: 200px;
-}
-
-.useService .details{
-    text-align: left;
-    margin: 0 45px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    color: #535261;
+.useService{
+    margin: 0 5px;
 }
 
 .btnActions{
-    margin: 30px 0;
+    margin: 100px 0;
 }
 
 .cancel{
@@ -145,6 +131,7 @@
     line-height: 21px;
     display: flex;
     align-items: center;
+    margin: 86px 0;
 }
 
 .requireTitle span{
@@ -152,74 +139,34 @@
     margin: 0 5px;
 }
 
-
-.addItem{
+.service{
     position: absolute;
-    width: 80px;
-    height: 94px;
-    left: 1823px;
-    top: 163px;
-    background: #FFF2E7;
-    box-shadow: 0px 0px 6px #E7E9F2;
-    border-radius: 8px 0px 0px 8px;
+    width: 1104px;
+    height: 80px;
+    background: #FFFFFF;
+    border: 1.5px solid #FFAC6A;
+    border-radius: 8px;
 }
 
-.iconPlus{
-    color: #fff;
-    background: #FF9138;
-    width: 28px;
-    height: 24px;
-    margin: 5px 28px;
-    border-radius: 4px;
-    transform: rotate(-180deg);
-}
-
-.titleAddItem{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
-    color: #FF7506;
-}
-
-.content h2{
-    width: 200px;
-    height: 30px;
-    margin: 20px 20px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    color: #FF7506;
-}
-
-.detailDevice{
-    display: flex;
-    margin: 10px 41px;
-}
-
-.idDevice{
-    margin-right: 30px;
-    width: 110px;
-    height: 24px;
+.useService .idDevice{
+    margin: 0 5px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
     display: flex;
-    align-items: center;
     color: #282739;
 }
 
-.details{
+.useService .details{
+    text-align: left;
+    margin: 0 5px;
     font-family: 'Nunito';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color: #535261;
+    display: flex;
+    color: #282739;
 }
