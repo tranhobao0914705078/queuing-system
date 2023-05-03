@@ -3,12 +3,12 @@ import styles from './Dashboard.module.css'
 import Logo from './logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faTableColumns, faDesktop, faCommentAlt, faBars, faFile, faGear, faEllipsisVertical, faBell, faCamera } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
+import Tippy from '@tippyjs/react/headless'; 
 import iconUser from './user.png';
 import { Wrapper } from '../Popper';
 import MenuSetting from '../Popper/Menu';
 import { Link, useLocation } from 'react-router-dom';
+import { Notify } from '../Notify/Notify';
 
 const MENU_SETTING = [
   {
@@ -37,6 +37,8 @@ export const Admin = () => {
       setActiveItem('dashboard')
     }else if(path === '/device'){
       setActiveItem('device')
+    }else if(path === '/manage-service'){
+      setActiveItem('service')
     }
   }, [location]) 
 
@@ -60,7 +62,7 @@ export const Admin = () => {
           </Link>
         </li>
         <li className={`nav-item ${activeItem === 'service' ? styles.active : ''} ${styles.Category}`}>
-          <Link className="nav-link" to="/service">
+          <Link className="nav-link" to="/manage-service">
           <FontAwesomeIcon icon={faCommentAlt} className={styles.dashboardIcon}/>
             <span className={styles.title}>Dịch vụ</span></Link>
         </li>
@@ -79,9 +81,9 @@ export const Admin = () => {
             <FontAwesomeIcon icon={faGear} className={styles.dashboardIcon}/>
             <span className={styles.title}>Cài đặt hệ thống</span></a>
             <MenuSetting items={MENU_SETTING}>
-              <button className={styles.settingVertical}>
-                <FontAwesomeIcon icon={faEllipsisVertical} />
-              </button>
+                <button className={styles.settingVertical}>
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </button>
             </MenuSetting>
         </li>
         <hr className="sidebar-divider d-none d-md-block" />
@@ -94,7 +96,26 @@ export const Admin = () => {
       </div>
       <div className={styles.info}>
         <div className={styles.infoDes}>
-            <FontAwesomeIcon icon={faBell} className={styles.iconBell}/>
+        <Tippy
+          interactive = {true}
+          render={attrs => (
+            <div>
+              <div className={styles.notification} tabIndex={parseInt("-1")} {...attrs}>
+                <Wrapper>
+                  <h3 className={styles.headerNotification}>Thông báo</h3>
+                  <Notify />
+                  <Notify />
+                  <Notify />
+                  <Notify />
+                  <Notify />
+                  <Notify />
+                </Wrapper>
+              </div>
+            </div>
+          )}
+        >
+          <FontAwesomeIcon icon={faBell} className={styles.iconBell}/>
+        </Tippy>
             <div className={styles.infoUser}>
               <Link to={"/information"}><img src={iconUser} alt="avatar" /></Link>
               <div className={styles.userName}>

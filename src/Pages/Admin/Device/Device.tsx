@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styles from'./Device.module.css';
 import { faChevronRight, faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CustomSelect from './ActiveCondition';
-import CustomSelectConnect from './ConnecCondition';
-import Pagination from './Pagination';
+import CustomSelect from '../ActiceStatus/ActiveCondition';
+import CustomSelectConnect from '../ConnectStatus/ConnecCondition';
+import Pagination from '../Pagination/Pagination';
 import { Link } from 'react-router-dom';
 
 export const Device = () => {

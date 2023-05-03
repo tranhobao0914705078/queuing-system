@@ -113,7 +113,6 @@ td > a:hover{
 }
 
 .link{
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -167,6 +166,46 @@ tr:nth-child(2n) {
     font-size: 14px;
     line-height: 21px;
     color: #535261;
+}
+
+.statusConnect{
+   display: flex;
+}
+
+.actionsConnect{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin: 18px 10px;
+}
+
+.titleConnect{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #535261;
+    margin-top: 12px;
+}
+
+.actionsSuccess{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    margin: 18px 10px;
+}
+
+.titleSuccess{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #535261;
+    margin-top: 12px;
 }
 
 .Paginate{

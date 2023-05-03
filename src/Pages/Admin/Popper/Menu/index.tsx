@@ -1,4 +1,4 @@
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless'; 
 import styles from './Menu.module.css'
 import { Wrapper } from '..';
 
@@ -19,16 +19,16 @@ function MenuSetting({ children, items}: Props) {
         <Tippy 
               interactive
               placement="right"
-              offset={[30, 30]}
+              offset={[30, -10]}
               render={attrs => (
-                <div className={styles.content} tabIndex={parseInt("-1")} {...attrs}>
-                  <Wrapper>
+                <div className={styles.contentMenu} tabIndex={parseInt("-1")} {...attrs}>
                     <ul className={styles.titleSetting}>
+                      <Wrapper>
                         {items.map((item, index) => 
                             <li key={index}><a href={item.link}>{item.title}</a></li>
                         )}
+                      </Wrapper>
                     </ul>
-                  </Wrapper>
                 </div>
               )}
             >

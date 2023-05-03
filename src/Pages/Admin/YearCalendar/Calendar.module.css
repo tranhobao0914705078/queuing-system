@@ -1,0 +1,56 @@
+.PickerWrapper{
+    width: 320px;
+    height: 326px;
+    top: 250px;
+    left: 485px;
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.Header{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin: 0 10px;
+}
+
+.Header p {
+    flex: 1 0 0;
+    margin: 10px 0;
+}
+
+.icon{
+    cursor: pointer;
+}
+
+.bodyCalendar{
+    margin: 5px;
+}
+
+.dayCalendar{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day{
+    font-weight: bold;
+    color: #FF9138;
+}
+
+.titleDay{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #535261;
+}
+
+.active{
+    border: 1px solid black;
+}
+
+.currentDate{
+    border: 1px solid black;
+}

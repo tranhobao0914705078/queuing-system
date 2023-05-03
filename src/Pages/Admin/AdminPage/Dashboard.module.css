@@ -87,6 +87,7 @@
 .infoDes .iconBell{
     margin: 10px 30px;
     color: #FFAC6A;
+    cursor: pointer;
 }
 
 .infoUser{
@@ -124,4 +125,30 @@
     font-size: 12px;
     line-height: 18px;
     color: #7E7D88;
+}
+
+.notification{
+    width: 360px;
+    height: 526px;
+    padding: 8px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.headerNotification{
+    width: 345px;
+    height: 48px;
+    background: #FF9138;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 6px 15px;
+    line-height: 30px;
+    color: #FFFFFF;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
