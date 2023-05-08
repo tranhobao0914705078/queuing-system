@@ -58,7 +58,7 @@
 .title {
     font-family: 'Nunito';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     line-height: 24px;
     color: #282739;
@@ -159,6 +159,35 @@ tr:nth-child(2n) {
     background-color: red;
     margin: 6px 10px;
 }
+
+.actionsSuccess{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    margin: 6px 10px;
+}
+
+.actionsConnect{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    margin: 6px 10px;
+}
+
+.actionsUnConnect{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin: 6px 10px;
+}
+
+.statusConnect{
+    display: flex;
+}
+
 
 .title{
     font-family: 'Nunito';

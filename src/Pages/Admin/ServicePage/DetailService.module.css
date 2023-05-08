@@ -1,0 +1,381 @@
+.breadCrumb{
+    display: flex;
+    margin: 10px 20px;
+}
+
+.breadCrumbIcon{
+    margin: 6px 20px;
+}
+
+.breadCrumbCate{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #7E7D88;
+}
+
+.breadCrumbDetail{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FF7506;
+}
+
+.listDevice{
+    display: flex;
+    margin: 10px 10px;
+}
+
+.listDeviceTitle{
+    text-align: left;
+    margin: 60px 24px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FF7506;
+}
+
+.content{
+    position: absolute;
+    width: 1112px;
+    height: 450px;
+    left: 250px;
+    top: 200px;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxLeft{
+    width: 400px;
+    height: 656px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 12px;
+    margin: 0 10px;
+}
+
+.boxRight{
+    width: 750px;
+    height: 656px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+    border-radius: 12px;
+}
+
+.UpdateItem{
+    position: absolute;
+    width: 80px;
+    height: 94px;
+    left: 1823px;
+    top: 163px;
+    background: #FFF2E7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.iconPlus{
+    color: #fff;
+    background: #FF9138;
+    width: 28px;
+    height: 24px;
+    margin: 5px 28px;
+    border-radius: 4px;
+    transform: rotate(-180deg);
+}
+
+.titleBack,
+.titleUpdateItem{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FF7506;
+}
+
+.content h2{
+    width: 200px;
+    height: 30px;
+    margin: 20px 10px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FF7506;
+}
+
+.content .title2{
+    margin: 0;
+}
+
+.back{
+    position: absolute;
+    width: 80px;
+    height: 94px;
+    left: 1823px;
+    top: 255px;
+    background: #FFF2E7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.line{
+    width: 72px;
+    position: relative;
+    height: 1px;
+    left: 1600px;
+    margin: 34px 0;
+    background: #FFE3CD;
+    border-radius: 4px;
+}
+
+.detailService{
+    display: flex;
+    width: 370px;
+    margin: 0px 35px;
+}
+
+.titleDetail{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282739;
+}
+
+.titleNumber{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #535261;
+    margin: 0 40px;
+}
+
+.custom{
+    margin: 0 79px;
+}
+
+.ruleNumber{
+    text-align: left;
+    display: flex;
+    margin: 0 5px;
+}
+
+.rangeTitle{
+    margin: 10px 20px;
+    width: 61px;
+    height: 44px;   
+    background: #FFFFFF;
+    border: 1.5px solid #D4D4D7;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.rangeTitle p{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #535261;
+}
+
+.boxChecked{
+    margin: 18px 0;
+}
+
+.boxChecked1{
+    display: flex;
+}
+
+.titleBox1{
+    margin: 15px 0;
+}
+
+.titleLabel{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #282739;
+    width: 120px;
+    margin: 2px 5px;
+}
+
+.customChecked{
+    width: 20px;
+    height: 20px;
+    background: #FFFFFF;
+    border: 1.5px solid #4277FF;
+    border-radius: 4px;
+}
+
+.requireTitle{
+    text-align: left;
+    margin: 0 30px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    color: #282739;
+}
+
+.boxRight h2{
+    color: #000;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.times{
+    display: flex;
+    margin: 48px 193px;
+    width: 500px;
+}
+
+.times h2{
+    margin: -65px 0px;
+    width: 264px;
+    position: absolute;
+    left: 555px;
+}
+
+.iconCaret{
+    margin: -20px 0;
+}
+
+.box {
+    width: 100px;
+    height: 72px;
+    position: absolute;
+    top: -12px;
+    left: 980px;
+}
+  
+.title {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282739;
+    text-align: left;
+    margin: -20px 1px;
+}
+  
+.inputSearch{
+    height: 36px;
+    font-size: 16px;
+    width: 180px;
+    height: 44px; 
+    background: #FFFFFF;
+    border: 1.5px solid #D4D4D7;
+    border-radius: 8px;  
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: #A9A9B0;  
+    padding: 0 10px;
+    margin: -15px 0;
+}
+
+.iconSearch{
+    position: absolute;
+    top: 75px;
+    left: 155px;
+    color: #FF7506;
+}
+
+.Paginate{
+    position: absolute;
+    bottom: 0px;
+    width: 300px;
+    height: 50px;
+    left: 1300px;
+    margin: -210px -432px;
+}
+
+.tableDetailService {
+    position: absolute;
+    width: 705px;
+    height: 49px;
+    margin: 40px 36px;
+    left: 420px;
+    top: 55px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+.status{
+    display: flex;
+}
+
+.finish{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #34CD26;
+    margin: 6px 10px;
+}
+
+.processing{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #5490EB;
+    margin: 6px 10px;
+}
+
+.absent{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #6C7585;
+    margin: 6px 10px;
+}
+
+.title{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #535261;
+    margin: 0px 4px;
+}
+
+th {
+    border: 1px solid #FFE3CD;
+    width: 106px;
+    height: 49px;
+    background: #FF9138;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}

@@ -2,10 +2,14 @@ import { Admin } from '../Admin/AdminPage/Admin';
 import { Device } from 'Pages/Admin/Device/Device';
 import { Information } from 'Pages/Admin/Information/Information';
 import { Dashboard } from 'Pages/Admin/Dashboard/Dashboard';
-import { AddItem } from 'Pages/Admin/Device/AddItem';
-import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
 import { ManageItem } from 'Pages/Admin/Device/ManageItem';
 import { ListService } from 'Pages/Admin/ServicePage/ListService';
+
+import { AddItem } from 'Pages/Admin/Device/AddItem';
+import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
+import { AddService } from 'Pages/Admin/ServicePage/AddService';
+import { DetailService } from 'Pages/Admin/ServicePage/DetailService';
+
 const publicRoutes = [
     {
         path: '/',
@@ -30,6 +34,14 @@ const publicRoutes = [
     {
         path: '/manage-service',
         component: ListService,
+    },
+    {
+        path: '/add-service',
+        component: AddService,
+    },
+    {
+        path: '/detail-service',
+        component: DetailService,
     },
     {
         path: '/dashboard',

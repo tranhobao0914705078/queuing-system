@@ -19,6 +19,7 @@ export const AddItem = () => {
             <h2 className={styles.listDeviceTitle}>Quản lý thiết bị</h2>
         </div>
         <div className={styles.content}>
+            <h2 className={styles.contentTitle}>Thông tin thiết bị</h2>
             <div className={styles.Flex_input}>
                 <div className={styles.inputLeft}>
                     <div className="form-group">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from'./ListService.module.css';
-import { faChevronRight, faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faSearch, faPlus, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CustomSelect from '../ActiceStatus/ActiveCondition';
 import CustomSelectConnect from '../ConnectStatus/ConnecCondition';
@@ -37,7 +37,9 @@ export const ListService = () => {
         <div className={styles.headerOptions}>
           <div className={styles.options}>
             <CustomSelect />
+            <h2 className={styles.titleTime}>Chọn thời gian</h2>
             <CustomCalendar />
+            <FontAwesomeIcon icon={faCaretRight} className={styles.iconCaret}/>
             <CustomCalendar />
           </div>
           <div className={styles.box}>
@@ -48,12 +50,125 @@ export const ListService = () => {
         </div>
         <div>
         {/* Table */}
+        <table>
+        <thead>
+          <tr>
+            <th>Mã dịch vụ</th>
+            <th>Tên dịch vụ</th>
+            <th>Mô tả</th>
+            <th style={{width: '120px'}}>Trạng thái hoạt động</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+            <td>Mô tả dịch vụ 1</td>
+            <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><Link to="/detail-service">Chi tiết</Link></td>
+            <td className={styles.linkUpdate}><Link to="/manage-device">Cập nhật</Link></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+            <td>Hoạt động</td>
+            <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+            <td>Hoạt động</td>
+            <td className={styles.status}>
+              <span className={styles.actions}></span>
+              <p className={styles.title}>Ngưng hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+            <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+             <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+             <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+            <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+             <td className={styles.status}>
+              <span className={styles.actions}></span>
+              <p className={styles.title}>Ngưng hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          <tr>
+            <td>KIO_01</td>
+            <td>Kiosk</td>
+             <td>Hoạt động</td>
+             <td className={styles.status}>
+              <span className={styles.actionsSuccess}></span>
+              <p className={styles.titleSuccess}>Hoạt động</p>
+            </td>
+            <td className={styles.link}><a href="">Chi tiết</a></td>
+            <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+          </tr>
+          </tbody>
+        </table>
         {/* End Table */}
         <div className={styles.addItem}>
             <div className={styles.iconPlus}>
                 <FontAwesomeIcon icon={faPlus}/>
             </div>
-            <Link to="/add-item"><p className={styles.titleAddItem}>Thêm dịch vụ</p></Link>
+            <Link to="/add-service"><p className={styles.titleAddItem}>Thêm dịch vụ</p></Link>
         </div>
         </div>
         <div className={styles.Paginate}>

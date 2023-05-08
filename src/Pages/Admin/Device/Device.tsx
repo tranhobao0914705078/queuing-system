@@ -30,7 +30,7 @@ export const Device = () => {
             <CustomSelectConnect />
           </div>
           <div className={styles.box}>
-            <h2 className={styles.title}>Trạng thái hoạt động</h2>
+            <h2 className={styles.title}>Từ khóa</h2>
             <input type="text" className={styles.inputSearch} placeholder='Nhập từ khóa'/>
             <FontAwesomeIcon  icon={faSearch} className={styles.iconSearch}/>
           </div>
@@ -60,7 +60,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>
@@ -102,7 +102,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>
@@ -123,7 +123,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>
@@ -144,7 +144,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>
@@ -165,7 +165,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>
@@ -186,7 +186,7 @@ export const Device = () => {
             </td>
             <td>
               <div className={styles.statusConnect}>
-                <span className={styles.actionsConnect}></span>
+                <span className={styles.actionsUnConnect}></span>
                 <p className={styles.titleConnect}>Mất kết nối</p>
               </div>
             </td>

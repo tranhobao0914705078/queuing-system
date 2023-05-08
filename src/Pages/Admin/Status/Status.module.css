@@ -1,4 +1,3 @@
-
 .box {
     width: 300px;
     height: 72px;
@@ -6,11 +5,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: -45px 20px;
+    margin: -20px 20px;
 }
   
 .title {
-    position: absolute;
     text-align: left;
     top: 166px;
     font-family: 'Nunito';
@@ -19,14 +17,16 @@
     font-size: 16px;
     line-height: 24px;
     color: #282739;
+    margin: 10px 0;
 }
   
 .select_menu{
     height: 36px;
     font-size: 16px;
-    width: 300px;
-    height: 44px; 
+    width: 160px;
+    height: 198px; 
     background: #FFFFFF;
     border: 1.5px solid #D4D4D7;
-    border-radius: 8px;      
+    border-radius: 8px;    
+    margin: -10px 0;  
 }
