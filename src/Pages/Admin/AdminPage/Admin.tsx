@@ -39,6 +39,8 @@ export const Admin = () => {
       setActiveItem('device')
     }else if(path === '/manage-service'){
       setActiveItem('service')
+    }else if(path === '/manage-number'){
+      setActiveItem('manageNumber')
     }
   }, [location]) 
 
@@ -66,10 +68,10 @@ export const Admin = () => {
           <FontAwesomeIcon icon={faCommentAlt} className={styles.dashboardIcon}/>
             <span className={styles.title}>Dịch vụ</span></Link>
         </li>
-        <li className={`nav-item ${styles.Category}`}>
-          <a className="nav-link" href="index.html">
+        <li className={`nav-item ${activeItem === 'manageNumber' ? styles.active : ''} ${styles.Category}`}>
+          <Link className="nav-link" to="/manage-number">
             <FontAwesomeIcon icon={faBars} className={styles.dashboardIcon}/>
-            <span className={styles.title}>Cấp số</span></a>
+            <span className={styles.title}>Cấp số</span></Link>
         </li>
         <li className={`nav-item ${styles.Category}`}>
           <a className="nav-link" href="index.html">

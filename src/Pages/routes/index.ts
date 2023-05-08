@@ -9,6 +9,9 @@ import { AddItem } from 'Pages/Admin/Device/AddItem';
 import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
 import { AddService } from 'Pages/Admin/ServicePage/AddService';
 import { DetailService } from 'Pages/Admin/ServicePage/DetailService';
+import { ManageNumber } from 'Pages/Admin/ManageNumber/ManageNumber';
+import { NewNumber } from 'Pages/Admin/NewNumber/NewNumber';
+import { Details } from 'Pages/Admin/ManageNumber/Details';
 
 const publicRoutes = [
     {
@@ -42,6 +45,18 @@ const publicRoutes = [
     {
         path: '/detail-service',
         component: DetailService,
+    },
+    {
+        path: '/manage-number',
+        component: ManageNumber,
+    },
+    {
+        path: '/new-number',
+        component: NewNumber,
+    },
+    {
+        path: '/details-number',
+        component: Details
     },
     {
         path: '/dashboard',

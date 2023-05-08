@@ -9,6 +9,7 @@
     margin: -31px 10px;
     border: 1px solid #D4D4D7;
     background: #FFFFFF;
+    z-index: 1;
 }
   
 .title {

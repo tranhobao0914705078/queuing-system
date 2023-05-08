@@ -1,0 +1,31 @@
+
+.box {
+    width: 440px;
+    height: 44px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: -45px 20px;
+}
+  
+.title {
+    text-align: center;
+    top: 166px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #535261;
+}
+  
+.select_menu{
+    height: 44px;
+    font-size: 16px;
+    width: 400px;
+    height: 198px; 
+    background: #FFFFFF;
+    border: 1.5px solid #D4D4D7;
+    border-radius: 8px;      
+}
