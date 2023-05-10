@@ -4,6 +4,7 @@ import { Information } from 'Pages/Admin/Information/Information';
 import { Dashboard } from 'Pages/Admin/Dashboard/Dashboard';
 import { ManageItem } from 'Pages/Admin/Device/ManageItem';
 import { ListService } from 'Pages/Admin/ServicePage/ListService';
+import { Report } from 'Pages/Admin/Report/Report';
 
 import { AddItem } from 'Pages/Admin/Device/AddItem';
 import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
@@ -12,6 +13,10 @@ import { DetailService } from 'Pages/Admin/ServicePage/DetailService';
 import { ManageNumber } from 'Pages/Admin/ManageNumber/ManageNumber';
 import { NewNumber } from 'Pages/Admin/NewNumber/NewNumber';
 import { Details } from 'Pages/Admin/ManageNumber/Details';
+import { ManageAccount } from 'Pages/Admin/ManageAccount/ManageAccount';
+import { AddAccount } from 'Pages/Admin/ManageAccount/AddAccount';
+import { UpdateAccount } from 'Pages/Admin/ManageAccount/UpdateAccount';
+import { MemoryUser } from 'Pages/Admin/MemoryUser/MemoryUser';
 
 const publicRoutes = [
     {
@@ -57,6 +62,26 @@ const publicRoutes = [
     {
         path: '/details-number',
         component: Details
+    },
+    {
+        path: '/report',
+        component: Report,
+    },
+    {
+        path: '/manage-account',
+        component: ManageAccount,
+    },
+    {
+        path: '/add-account',
+        component: AddAccount,
+    },
+    {
+        path: '/update-account',
+        component: UpdateAccount,
+    },
+    {
+        path: '/memory-user',
+        component: MemoryUser,
     },
     {
         path: '/dashboard',

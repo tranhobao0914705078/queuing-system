@@ -17,11 +17,11 @@ const MENU_SETTING = [
   },
   {
     title: "Quản lý tài khoản",
-    link: ""
+    link: "/manage-account"
   },
   {
     title: "Nhật ký người dùng",
-    link: ""
+    link: "/memory-user"
   }
 ]
 export const Admin = () => {
@@ -41,6 +41,8 @@ export const Admin = () => {
       setActiveItem('service')
     }else if(path === '/manage-number'){
       setActiveItem('manageNumber')
+    }else if(path === '/report'){
+      setActiveItem('report')
     }
   }, [location]) 
 
@@ -74,9 +76,9 @@ export const Admin = () => {
             <span className={styles.title}>Cấp số</span></Link>
         </li>
         <li className={`nav-item ${styles.Category}`}>
-          <a className="nav-link" href="index.html">
+          <Link className="nav-link" to="/report">
             <FontAwesomeIcon icon={faFile} className={styles.dashboardIcon}/>
-            <span className={styles.title}>Báo cáo</span></a>
+            <span className={styles.title}>Báo cáo</span></Link>
         </li>
         <li className={`nav-item ${styles.Category}`}>
           <a className="nav-link" href="index.html">

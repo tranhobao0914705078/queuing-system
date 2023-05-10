@@ -1,0 +1,257 @@
+.breadCrumb{
+    display: flex;
+    margin: 10px 20px;
+}
+
+.breadCrumbIcon{
+    margin: 6px 20px;
+}
+
+.breadCrumbCate{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #7E7D88;
+}
+
+.breadCrumbDetail{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FF7506;
+}
+
+.listDevice{
+    display: flex;
+    margin: 10px 10px;
+}
+
+.listDeviceTitle{
+    text-align: left;
+    margin: 60px 12px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FF7506;
+}
+
+.options{
+    display: flex;
+    margin: 170px 25px;
+}
+
+.headerOptions{
+    display: flex;
+    
+}
+
+.box {
+    width: 300px;
+    height: 72px;
+    margin: -63px 150px;
+}
+  
+.title {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282739;
+    text-align: left;
+}
+  
+.inputSearch{
+    height: 36px;
+    font-size: 16px;
+    width: 300px;
+    height: 44px; 
+    background: #FFFFFF;
+    border: 1.5px solid #D4D4D7;
+    border-radius: 8px;  
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: #A9A9B0;  
+    padding: 0 10px;
+}
+
+.iconSearch{
+    position: absolute;
+    top: 207px;
+    right: 315px;
+    color: #FF7506;
+}
+
+table {
+    position: absolute;
+    width: 1344px;
+    height: 340px;
+    margin: 40px 36px;
+    left: 224px;
+    top: 244px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+  
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+td > a{
+    border-bottom: 1px solid blue;
+}
+
+td > a:hover{
+    text-decoration: none;
+}
+
+.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.linkUpdate{
+    text-align: center;
+    text-decoration: none;
+}
+  
+th {
+    border: 1px solid #FFE3CD;
+    width: 106px;
+    height: 49px;
+    background: #FF9138;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+
+tr:nth-child(2n) {
+    background-color: #FFF2E7;
+}
+
+.element {
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.status{
+    display: flex;
+}
+
+.actions{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin: 6px 10px;
+}
+
+.actionsWaiting{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4277FF;
+    margin: 6px 10px;
+}
+
+.actionsUsed{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7E7D88;
+    margin: 6px 10px;
+}
+
+.actionsCancel{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #E73F3F;
+    margin: 6px 10px;
+}
+
+.statusConnect{
+    display: flex;
+}
+
+
+.title{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #535261;
+}
+
+.Paginate{
+    position: absolute;
+    bottom: 0px;
+    width: 300px;
+    height: 50px;
+    left: 1300px;
+}
+
+.addItem{
+    position: absolute;
+    width: 80px;
+    height: 94px;
+    left: 1823px;
+    top: 279px;
+    background: #FFF2E7;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.iconPlus{
+    color: #fff;
+    background: #FF9138;
+    width: 28px;
+    height: 24px;
+    margin: 5px 28px;
+    border-radius: 4px;
+    transform: rotate(-180deg);
+}
+
+.icon{
+    margin: -15px 0;
+}
+
+.titleAddItem{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FF7506;
+}
+
+.times{
+    position: absolute;
+    top: 160px;
+    left: 266px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282739;
+}
