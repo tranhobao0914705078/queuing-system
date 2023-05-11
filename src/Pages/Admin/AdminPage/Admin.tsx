@@ -13,7 +13,7 @@ import { Notify } from '../Notify/Notify';
 const MENU_SETTING = [
   {
     title: "Quản lý vai trò",
-    link: "/admin"
+    link: "/manage-role"
   },
   {
     title: "Quản lý tài khoản",

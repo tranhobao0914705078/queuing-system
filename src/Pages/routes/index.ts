@@ -17,6 +17,8 @@ import { ManageAccount } from 'Pages/Admin/ManageAccount/ManageAccount';
 import { AddAccount } from 'Pages/Admin/ManageAccount/AddAccount';
 import { UpdateAccount } from 'Pages/Admin/ManageAccount/UpdateAccount';
 import { MemoryUser } from 'Pages/Admin/MemoryUser/MemoryUser';
+import { ManageRole } from 'Pages/Admin/ManageRole/ManageRole';
+import { ListRole } from 'Pages/Admin/ManageRole/ListRole';
 
 const publicRoutes = [
     {
@@ -82,6 +84,14 @@ const publicRoutes = [
     {
         path: '/memory-user',
         component: MemoryUser,
+    },
+    {
+        path: '/manage-role',
+        component: ManageRole,
+    },
+    {
+        path: '/add-role',
+        component: ListRole,
     },
     {
         path: '/dashboard',
