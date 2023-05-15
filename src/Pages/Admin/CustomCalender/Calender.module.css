@@ -44,3 +44,9 @@
     margin: 2px 0;
     color: #FF7506;
 }
+
+.customCalendar{
+    position: absolute;
+    top: 245px;
+    left: 480px;
+}

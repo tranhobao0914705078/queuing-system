@@ -5,7 +5,11 @@ import styles from './Calendar.module.css';
 import { monthNames } from './StoreCalendar';
 import { getNumberOfDaysInMonth, getStoredDay, range } from'./index';
 
-export const CalendarCustom = ()=> {
+interface Props{
+  className: string;
+}
+
+export const CalendarCustom = ({className}: Props)=> {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -42,7 +46,7 @@ export const CalendarCustom = ()=> {
   };
 
   return (
-    <div className={styles.PickerWrapper}>
+    <div className={`${styles.PickerWrapper} ${className}`}>
       <div className={styles.Header}>
         <FontAwesomeIcon icon={faChevronLeft} className={styles.icon} onClick={togglePrevMonth}/>
           <p>{monthNames[currentMonth]} {currentYear}</p>

@@ -6,7 +6,6 @@ import CustomSelect from '../ActiceStatus/ActiveCondition';
 import CustomSelectConnect from '../ConnectStatus/ConnecCondition';
 import Pagination from '../Pagination/Pagination';
 import { Link } from 'react-router-dom';
-import { CalendarCustom } from '../YearCalendar/CalendarCustom';
 import { CalendarCustom as CustomCalendar } from '../CustomCalender/CustomCalendar';
 
 export const ListService = () => {

@@ -18,7 +18,7 @@ export const CalendarCustom = () => {
                 <p className={styles.time}>{currentDate.toLocaleDateString()}</p>
                 {showCalendar && (
                     <div className={styles.calendar}>
-                        <Calendar />
+                        <Calendar className={styles.customCalendar}/>
                     </div>
                 )}
             </div>

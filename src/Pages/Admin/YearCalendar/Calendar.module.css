@@ -1,12 +1,11 @@
 .PickerWrapper{
-    width: 320px;
-    height: 326px;
-    top: 250px;
-    left: 485px;
+    width: 340px;
+    height: 280px;
     position: absolute;
     background: #FFFFFF;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
+    z-index: 9999999;
 }
 
 .Header{
