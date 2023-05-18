@@ -1,9 +1,29 @@
 import React, { Fragment } from 'react'
+import { useState } from 'react'
 import styles from './AddService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
+import { collection, getDocs, onSnapshot, query, where, addDoc } from "firebase/firestore";
+import { db } from 'firebase-config/firebase';
 
 export const AddService = () => {
+
+    const [serviceCode, setServiceCode] = useState("");
+    const [serviceName, setServiceName] = useState("");
+    const [serviceDes, setServiceDes] = useState("");
+    const [serviceStatus, setServiceStatus] = useState(0);
+    const colRef = collection(db, "Service");
+    const navigate = useNavigate();
+    const addService = async () => {
+        await addDoc(colRef, {
+            service_code: serviceCode,
+            service_name: serviceName,
+            service_des: serviceDes,
+            service_status: serviceStatus
+        })
+        navigate("/manage-service");
+    }
   return (
     <Fragment>
     <div className={styles.container}>
@@ -23,17 +43,17 @@ export const AddService = () => {
                 <div className={styles.inputLeft}>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="idDevice">Mã dịch vụ: <span>*</span></label>
-                        <input type="text" className="form-control" id="idDevice" value="201" aria-describedby="emailHelp" placeholder="Mã dịch vụ" />
+                        <input onChange={(e) => setServiceCode(e.target.value)} type="text" className="form-control" id="idDevice" aria-describedby="emailHelp" placeholder="Mã dịch vụ" />
                     </div>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="nameDevice">Tên dịch vụ: <span>*</span></label>
-                        <input type="text" className="form-control" id="nameDevice" value="khám tim mạch" aria-describedby="emailHelp" placeholder="Tên thiết bị" />
+                        <input onChange={(e) => setServiceName(e.target.value)} type="text" className="form-control" id="nameDevice" aria-describedby="emailHelp" placeholder="Tên thiết bị" />
                     </div>
                 </div>
                 <div className={styles.inputRight}>
                     <div className="form-group">
                         <label className={styles.labelName} style={{width: '200px'}} htmlFor="userName">Mô tả: <span>*</span></label>
-                        <input type="text" className={`form-control ${styles.des}`} id="userName" placeholder="Mô tả dịch vụ" />
+                        <input onChange={(e) => setServiceDes(e.target.value)} type="text" className={`form-control ${styles.des}`} id="userName" placeholder="Mô tả dịch vụ" />
                     </div>
                 </div>
             </div>
@@ -91,7 +111,7 @@ export const AddService = () => {
         </div>
         <div className={styles.btnActions}>
             <button className={styles.cancel}>Hủy bỏ</button>
-            <button className={styles.addItem}>Thêm dịch vụ</button>
+            <button className={styles.addItem} onClick={addService}>Thêm dịch vụ</button>
         </div>
     </div>
     </Fragment>

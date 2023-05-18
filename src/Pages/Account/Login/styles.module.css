@@ -112,3 +112,10 @@
 .logoResetPass{
     background-size: cover;
 }
+
+.errorLogin{
+    text-align: left;
+    margin: 5px 5px;
+    color: red;
+    font-size: 16px;
+}

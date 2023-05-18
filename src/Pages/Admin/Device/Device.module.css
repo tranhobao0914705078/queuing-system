@@ -186,6 +186,8 @@ tr:nth-child(2n) {
 
 .statusConnect{
     display: flex;
+    margin: -9px 0;
+    position: absolute;
 }
 
 
@@ -193,6 +195,16 @@ tr:nth-child(2n) {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #535261;
+}
+
+.titleConnect,
+.titleSuccess{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     color: #535261;

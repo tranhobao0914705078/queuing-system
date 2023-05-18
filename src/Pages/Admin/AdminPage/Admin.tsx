@@ -9,6 +9,10 @@ import { Wrapper } from '../Popper';
 import MenuSetting from '../Popper/Menu';
 import { Link, useLocation } from 'react-router-dom';
 import { Notify } from '../Notify/Notify';
+import { onAuthStateChanged, signInWithEmailAndPassword, User, signOut } from 'firebase/auth';
+import { auth } from 'firebase-config/firebase';
+import { useNavigate } from 'react-router-dom';
+
 
 const MENU_SETTING = [
   {
@@ -30,6 +34,25 @@ export const Admin = () => {
   //   setActiveItem(item);
   // };
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
+
+    const handleLogOut = async () => {
+      await signOut(auth);
+      navigate("/")
+    }
 
   useEffect(() => {
     const path = location.pathname;
@@ -93,7 +116,7 @@ export const Admin = () => {
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
       <div>
-        <button className={styles.btnLogout}>
+        <button className={styles.btnLogout} onClick={handleLogOut}>
           <FontAwesomeIcon icon={faArrowRightFromBracket} className={styles.btnIcon}/>
             Đăng xuất
         </button>
@@ -124,7 +147,7 @@ export const Admin = () => {
               <Link to={"/information"}><img src={iconUser} alt="avatar" /></Link>
               <div className={styles.userName}>
                 <p className={styles.welcome}>Xin chào</p>
-                <p className={styles.name}>Lê Quỳnh Ái Vân</p>
+                {user && <p className={styles.name}>{user.email}</p>}
               </div>
             </div>
         </div>

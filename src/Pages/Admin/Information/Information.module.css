@@ -94,7 +94,7 @@
     display: flex;
     align-items: center;
     color: #282739;
-    margin: -20px 45px;
+    margin: -20px 65px;
     width: 240px;
 }
 
@@ -174,6 +174,7 @@
     z-index: 1;
     color: #FF7506;
 }
+
 
 
 

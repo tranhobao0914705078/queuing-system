@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate  } from 'react-router-dom';
 import styles from './styles.module.css'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import bannerImg from '../Image/banner.png';
 import logoImg from '../Image/logo.png';
+import { onAuthStateChanged, signInWithEmailAndPassword, User } from 'firebase/auth';
+import { auth } from 'firebase-config/firebase';
 
 export const Login = () => {
     const [showPass, setShowPass] = useState(false);
@@ -14,6 +16,37 @@ export const Login = () => {
     }
     const inputTypePassword = showPass ? 'text' : 'password';
     const eyePass = showPass ? faEye : faEyeSlash;
+    const navigate = useNavigate();
+
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [errorLogin, setErrorLogin] = useState('');
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+    
+        return () => {
+          unsubscribe();
+        };
+      }, []);
+    
+
+    const handleLogin = async () => {
+        try{
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            navigate("/dashboard")
+        }catch(error){
+            const errorMessage = 'Sai mật khẩu. Vui lòng thử lại!';
+            setErrorLogin(errorMessage);
+        }
+    }
 
   return (
     <div className={styles.container}>
@@ -23,20 +56,18 @@ export const Login = () => {
                 alt="" />
             <div className='form-group mt-5'>
                 <label htmlFor='username' className={styles.titleUsername}>Tên Đăng Nhập *</label>
-                <input type="text" name="username" id="username" className="form-control" placeholder='Tên đăng nhập...'/>
+                <input type="text" onChange={(e) => setLoginEmail(e.target.value)} name="username" id="username" className="form-control"  placeholder='Tên đăng nhập...'/>
             </div>
             <div className='form-group mt-5'>
                 <label htmlFor='password' className={styles.titlePassword}>Mật Khẩu *</label>
                 <div className={styles.eyePass} onClick={toggleShowPass}>
                     <FontAwesomeIcon icon={eyePass} />
                 </div>
-                <input type={inputTypePassword} name="password" id="password" className="form-control" placeholder='Mật Khẩu...'/>
+                <input type={inputTypePassword} onChange={(e) => setLoginPassword(e.target.value)} name="password" id="password" className="form-control" placeholder='Mật Khẩu...'/>
             </div>
+            {errorLogin && <p className={styles.errorLogin}>{errorLogin}</p>}
             <Link className={styles.forgotPassword} to="/send-mail">Quên mật khẩu?</Link>
-            {/* <a href="" className={styles.btnLogin} onClick={handleLogin}>
-                Đăng Nhập
-            </a> */}
-            <Link className={styles.btnLogin} to="/admin">Đăng Nhập</Link>
+            <button className={styles.btnLogin} onClick={handleLogin} type='submit'>Đăng Nhập</button>
         </div>
         <div className={styles.banner}>
            <img 

@@ -54,8 +54,8 @@ export const CalendarCustom = ({className}: Props)=> {
       </div>
       <div className={styles.bodyCalendar}>
           <div className={styles.dayCalendar}>
-              {getStoredDay(currentYear, currentMonth).map((day) => 
-                <p className={styles.day}>{day}</p>
+              {getStoredDay(currentYear, currentMonth).map((day, index) => 
+                <p className={styles.day} key={index}>{day}</p>
               )}
           </div>
           <div className={styles.dayCalendar} onClick={handleSelectDate}>

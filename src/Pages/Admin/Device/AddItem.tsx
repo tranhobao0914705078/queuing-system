@@ -1,10 +1,34 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import styles from './AddItem.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CustomSelectType from './TypeDevice'
+import { useNavigate } from 'react-router-dom'
+import { collection, getDocs, onSnapshot, query, where, addDoc } from "firebase/firestore";
+import { db } from 'firebase-config/firebase';
 
 export const AddItem = () => {
+    const [deviceCode, setDeviceCode] = useState("");
+    const [deviceName, setDeviceName] = useState("");
+    const [deviceIPAddress, setDeviceIPAddress] = useState("");
+    const [deviceUsedService, setDeviceUsedService] = useState("");
+    const [deviceActive, setDeviceActive] = useState(0);
+    const [deviceConnect, setDeviceConnect] = useState(0);
+    const colRef = collection(db, "Devices");
+    const navigate = useNavigate();
+    const createDevice = async () => {
+        await addDoc(colRef, 
+            {
+                device_code: deviceCode, 
+                device_name: deviceName, 
+                device_ipaddress: deviceIPAddress, 
+                device_usedservice: deviceUsedService,
+                device_active: deviceActive,
+                device_connect: deviceConnect
+            }
+        )
+        navigate('/device');
+    }
   return (
     <Fragment>
     <div className={styles.container}>
@@ -24,15 +48,15 @@ export const AddItem = () => {
                 <div className={styles.inputLeft}>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="idDevice">Mã thiết bị: <span>*</span></label>
-                        <input type="text" className="form-control" id="idDevice" aria-describedby="emailHelp" placeholder="Mã thiết bị" />
+                        <input type="text" onChange={(e) => setDeviceCode(e.target.value)} className="form-control" id="idDevice" aria-describedby="emailHelp" placeholder="Mã thiết bị" />
                     </div>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="nameDevice">Tên thiết bị: <span>*</span></label>
-                        <input type="text" className="form-control" id="nameDevice" aria-describedby="emailHelp" placeholder="Tên thiết bị" />
+                        <input type="text" onChange={(e) => setDeviceName(e.target.value)} className="form-control" id="nameDevice" aria-describedby="emailHelp" placeholder="Tên thiết bị" />
                     </div>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="ipAddress">Địa chỉ IP: <span>*</span></label>
-                        <input type="text" className="form-control" id="ipAddress" aria-describedby="emailHelp" placeholder="Địa chỉ IP" />
+                        <input type="text" onChange={(e) => setDeviceIPAddress(e.target.value)} className="form-control" id="ipAddress" aria-describedby="emailHelp" placeholder="Địa chỉ IP" />
                     </div>
                 </div>
                 <div className={styles.inputRight}>
@@ -52,12 +76,12 @@ export const AddItem = () => {
             </div>
             <div className={`form-group ${styles.useService}`}>
                 <label className={styles.labelName} htmlFor="usedService">Dịch vụ sử dụng: <span>*</span></label>
-                <input type="text" className="form-control" id="usedService" aria-describedby="emailHelp" placeholder="Dịch vụ sử dụng" />
+                <input type="text" onChange={(e) => setDeviceUsedService(e.target.value)} className="form-control" id="usedService" aria-describedby="emailHelp" placeholder="Dịch vụ sử dụng" />
                 <small  id="usedService" className={`form-text text-muted ${styles.requireTitle}`}><span>*</span> Là trường thông tin bắt buộc.</small>
             </div>
             <div className={styles.btnActions}>
                 <button className={styles.cancel}>Hủy bỏ</button>
-                <button className={styles.addItem}>Thêm thiết bị</button>
+                <button className={styles.addItem} onClick={createDevice}>Thêm thiết bị</button>
             </div>
         </div>
     </div>
