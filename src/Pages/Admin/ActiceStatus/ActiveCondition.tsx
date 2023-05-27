@@ -4,9 +4,9 @@ import styles from './ActiveCondition.module.css'
 type StateManagedSelect = { value: string; label: string };
 
 const options = [
-  { value: '', label: 'Tất cả' },
-  { value: 'option2', label: 'Hoạt động' },
-  { value: 'option3', label: 'Ngưng hoạt động' }
+  { value: '0', label: 'Tất cả' },
+  { value: '1', label: 'Hoạt động'},
+  { value: '2', label: 'Ngưng hoạt động'}
 ];
 
 const customStyles = {
@@ -24,11 +24,16 @@ const customStyles = {
   }),
 };
 
-const CustomSelect = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(options[0]);
+type ActiveProps = {
+  onChange: (newValue: string | null) => void;
+};
 
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
+const CustomSelect: React.FC<ActiveProps> = ({ onChange }) => {
+    const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
+
+    const handleChange = (newValue: StateManagedSelect | null) => {
+      setSelectedOption(newValue);
+      onChange(newValue ? newValue.value : null);
     };
 
     return (
@@ -36,6 +41,7 @@ const CustomSelect = () => {
             <h2 className={styles.title}>Trạng thái hoạt động</h2>
             <Select
                 value={selectedOption}
+                placeholder="Tất cả"
                 onChange={handleChange}
                 options={options}
                 styles={customStyles}

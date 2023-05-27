@@ -1,11 +1,14 @@
-import React, {Fragment, useState} from 'react'
-import { Link } from 'react-router-dom';
+import React, {Fragment, useEffect, useState} from 'react'
+import { Link, useParams } from 'react-router-dom';
 import styles from './DetailService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faPen, faRotateLeft, faCaretRight, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { CalendarCustom as CustomCalendar } from '../CustomCalender/CustomCalendar';
 import CustomStatus from '../Status/Status';
 import Pagination from '../Pagination/Pagination';
+import { DocumentData, Query, collection, doc, onSnapshot, where, query } from 'firebase/firestore';
+import { getDoc } from 'firebase/firestore';
+import { db } from 'firebase-config/firebase';
 
 
 export const DetailService = () => {
@@ -14,6 +17,58 @@ export const DetailService = () => {
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
     }
+    const {id} = useParams();
+    const [serviceCode, setServiceCode] = useState("");
+    const [serviceName, setServiceName] = useState("");
+    const [serviceDes, setServiceDes] = useState("");
+    const [selectStatus, setSelectStatus] = useState(0);
+    const [serviceIncreaseFrom, setServiceIncreaseFrom] = useState("")
+    const [serviceIncreaseTo, setServiceIncreaseTo] = useState("")
+    const [preFix, setPrefix] = useState(0)
+    const [serviceFinish, setServiceFinish] = useState<any>([]);
+    const handleChange = (newValue: string | null) => {
+      if(newValue){
+          const parseNewValue = parseInt(newValue, 10);
+          console.log(parseNewValue);
+          setSelectStatus(parseNewValue);
+      }
+    }
+    useEffect(() => {
+      const colRef = collection(db, "serviceFinish");
+      let newRef: Query<DocumentData> = colRef;
+      if(selectStatus !== 0){
+          newRef = query(colRef, 
+              where("status", '==', selectStatus)
+          );
+      }
+      onSnapshot(newRef, (snapshot) => {
+        const results: any[] = [];
+        snapshot.forEach((doc) => {
+          results.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        setServiceFinish(results);
+      })
+    }, [selectStatus])
+    if (!id) return null;
+    const docRef = doc(db, "Service", id);
+    const getId = async () => {
+        const service = await getDoc(docRef);
+        if (service.exists()) {
+            setServiceCode(service.data()?.service_code);
+            setServiceName(service.data()?.service_name);
+            setServiceDes(service.data()?.service_des);
+            setServiceIncreaseFrom(service.data()?.service_increase.from);
+            setServiceIncreaseTo(service.data()?.service_increase.to);
+            setPrefix(service.data()?.service_prefix);
+        } else {
+            console.log('Document does not exist!');
+    }
+    };
+    getId();
+
 return (
 <Fragment>
    <div className={styles.container}>
@@ -32,15 +87,15 @@ return (
             <h2 className={styles.titleBoxLeft}>Thông tin dịch vụ</h2>
             <div className={styles.detailService}>
                <p className={styles.titleDetail}>Mã dịch vụ</p>
-               <p className={styles.titleNumber}>201</p>
+               <p className={styles.titleNumber}>{serviceCode}</p>
             </div>
             <div className={styles.detailService}>
                <p className={styles.titleDetail}>Tên dịch vụ</p>
-               <p className={styles.titleNumber}>Khám tim mạch</p>
+               <p className={styles.titleNumber}>{serviceName}</p>
             </div>
             <div className={styles.detailService}>
                <p className={styles.titleDetail}>Mô tả</p>
-               <p className={`${styles.titleNumber} ${styles.custom}`}>Chuyên các bệnh lý về tim</p>
+               <p className={`${styles.titleNumber} ${styles.custom}`}>{serviceDes}</p>
             </div>
             <h2 className={styles.title2}>Quy tắc cấp số</h2>
             <div className={`form-group ${styles.useService}`}>
@@ -51,14 +106,14 @@ return (
                </label>
             </div>
             <div className={styles.boxChecked1}>
-               <div className={styles.rangeTitle}>
-                  <p>0001</p>
-               </div>
-               <p className={styles.titleBox1}>đến</p>
-               <div className={styles.rangeTitle}>
-                  <p>9999</p>
-               </div>
-            </div>
+                        <div className={styles.rangeTitle}>
+                            <input type="number"  placeholder={serviceIncreaseFrom || '0001'}/>
+                        </div>
+                        <p className={styles.titleBox1}>đến</p>
+                        <div className={styles.rangeTitle}>
+                            <input type="number" placeholder={serviceIncreaseTo || '0009'} max='9999'/>
+                        </div>
+                    </div>
          </div>
          <div className={styles.ruleNumber}>
             <div className={`form-check ${styles.boxChecked}`}>
@@ -67,7 +122,11 @@ return (
             </label>
          </div>
          <div className={styles.rangeTitle}>
-            <p>0001</p>
+            <input
+               type="number"
+               placeholder={preFix === 0 ? '0001' : preFix.toString()}
+               max='9999'
+            />
          </div>
       </div>
       <div className={styles.ruleNumber}>
@@ -81,7 +140,7 @@ return (
    </div>
    </div>
    <div className={styles.boxRight}>
-    <CustomStatus />
+    <CustomStatus onChange={handleChange}/>
     <div className={styles.times}>
         <h2>Chọn thời gian</h2>
         <CustomCalendar />
@@ -102,83 +161,18 @@ return (
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>201001</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201002</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201003</td>
-            <td className={styles.status}>
-              <span className={styles.processing}></span>
-              <p className={styles.title}>Đang thực hiện</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201004</td>
-            <td className={styles.status}>
-              <span className={styles.absent}></span>
-              <p className={styles.title}>Vắng</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201005</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201006</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201007</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201008</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201009</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201010</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
-          <tr>
-            <td>201011</td>
-            <td className={styles.status}>
-              <span className={styles.finish}></span>
-              <p className={styles.title}>Đã hoàn thành</p>
-            </td>
-          </tr>
+            {serviceFinish.map((ser: any) => 
+              <tr key={ser.id}>
+                <td>{ser.index}</td>
+                <td className={styles.status}>
+                  <span 
+                    className={ser.status === 1 ? styles.finish : ser.status === 2 ? styles.processing : styles.absent}
+                  >
+                  </span>
+                  <p className={styles.title}>{ser.status === 1 ? "Đã hoàn thành" : ser.status === 2 ? "Đang thực hiện" : "Vắng mặt"}</p>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
     {/* End table */}
@@ -200,7 +194,7 @@ return (
       <div className={styles.iconPlus}>
          <FontAwesomeIcon icon={faRotateLeft}/>
       </div>
-      <Link to="/add-item">
+      <Link to="/manage-service">
       <p className={styles.titleBack}>Quay lại</p>
       </Link>
    </div>

@@ -3,49 +3,70 @@ import { useState } from 'react'
 import styles from './AddService.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom'
-import { collection, getDocs, onSnapshot, query, where, addDoc } from "firebase/firestore";
+import { useNavigate, useParams } from 'react-router-dom'
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from 'firebase-config/firebase';
 
-export const AddService = () => {
+export const UpdateService = () => {
 
+    const {id} = useParams();
     const [serviceCode, setServiceCode] = useState("");
+    const [serviceCodeUpdate, setServiceCodeUpdate] = useState("");
     const [serviceName, setServiceName] = useState("");
+    const [serviceNameUpdate, setServiceNameUpdate] = useState("");
     const [serviceDes, setServiceDes] = useState("");
-    const [serviceStatus, setServiceStatus] = useState(2);
-    const [serviceIncrease, setServiceIncrease] = useState({ from: 0, to: 0 });
-    const [prefix, setPrefix] = useState(0);
-    const [surfix, setSurfix] = useState(0);
+    const [serviceDesUpdate, setServiceDesUpdate] = useState("");
+    const [serviceIncreaseFrom, setServiceIncreaseFrom] = useState("")
+    const [serviceIncreaseTo, setServiceIncreaseTo] = useState("")
+    const [serviceIncreaseUpdate, setServiceIncreaseUpdate] = useState({from: 0, to: 0})
+    const [preFix, setPrefix] = useState(0)
+    const [surFix, setSurfix] = useState(0)
+    const navigate = useNavigate();
+    if(!id) return null;
+    const docRef = doc(db, "Service", id);
+    const getId = async () => {
+        const service = await getDoc(docRef);
+        if(service.exists()){
+            setServiceCode(service.data()?.service_code);
+            setServiceName(service.data()?.service_name);
+            setServiceDes(service.data()?.service_des);
+            setServiceIncreaseFrom(service.data()?.service_increase.from);
+            setServiceIncreaseTo(service.data()?.service_increase.to);
+            setPrefix(service.data()?.service_prefix);
+            setSurfix(service.data()?.service_surfix);
+        }
+    }
+    getId()
     const handleFromChange = (e:any) => {
-        setServiceIncrease((prevValue) => ({
+        setServiceIncreaseUpdate((prevValue) => ({
           ...prevValue,
           from: e.target.value,
         }));
     };
     const handleToChange = (e:any) => {
-        setServiceIncrease((prevValue) => ({
+        setServiceIncreaseUpdate((prevValue) => ({
           ...prevValue,
           to: e.target.value,
         }));
     };
-    const colRef = collection(db, "Service");
-    const navigate = useNavigate();
-    const addService = async () => {
-        if(serviceCode === '' || serviceName === '' || serviceDes === ''){
-            alert("Vui lòng nhập đủ các trường!!!");
-        }else{
-            await addDoc(colRef, {
-                service_code: serviceCode,
-                service_name: serviceName,
-                service_des: serviceDes,
-                service_status: serviceStatus,
-                service_increase: serviceIncrease,
-                service_prefix: prefix,
-                service_surfix: surfix
-            })
-            alert('Thêm dịch vụ thành công');
-            navigate("/manage-service");
+    const update = async () => {
+        const updatedServiceCode = serviceCodeUpdate || serviceCode;
+        const updatedServiceName = serviceNameUpdate || serviceName;
+        const updatedServiceDes = serviceDesUpdate || serviceDes;
+        let updatedServiceIncrease;
+        if (serviceIncreaseUpdate) {
+          updatedServiceIncrease = serviceIncreaseUpdate;
+        } else if (serviceIncreaseFrom || serviceIncreaseTo) {
+          updatedServiceIncrease = serviceIncreaseFrom || serviceIncreaseTo;
         }
+        await updateDoc(docRef, {
+            service_code: updatedServiceCode,
+            service_name: updatedServiceName,
+            service_des: updatedServiceDes,
+            service_increase: updatedServiceIncrease,
+          });
+          alert("Cập nhật thành công!!!");
+          navigate('/manage-service');
     }
   return (
     <Fragment>
@@ -66,17 +87,17 @@ export const AddService = () => {
                 <div className={styles.inputLeft}>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="idDevice">Mã dịch vụ: <span>*</span></label>
-                        <input onChange={(e) => setServiceCode(e.target.value)} type="text" className="form-control" id="idDevice" aria-describedby="emailHelp" placeholder="Mã dịch vụ" />
+                        <input onChange={(e) => setServiceCode(e.target.value)} type="text" className="form-control" id="idDevice" aria-describedby="emailHelp" placeholder={serviceCode} />
                     </div>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="nameDevice">Tên dịch vụ: <span>*</span></label>
-                        <input onChange={(e) => setServiceName(e.target.value)} type="text" className="form-control" id="nameDevice" aria-describedby="emailHelp" placeholder="Tên thiết bị" />
+                        <input onChange={(e) => setServiceName(e.target.value)} type="text" className="form-control" id="nameDevice" aria-describedby="emailHelp" placeholder={serviceName} />
                     </div>
                 </div>
                 <div className={styles.inputRight}>
                     <div className="form-group">
                         <label className={styles.labelName} style={{width: '200px'}} htmlFor="userName">Mô tả: <span>*</span></label>
-                        <input onChange={(e) => setServiceDes(e.target.value)} type="text" className={`form-control ${styles.des}`} id="userName" placeholder="Mô tả dịch vụ" />
+                        <textarea onChange={(e) => setServiceDes(e.target.value)} className={`form-control ${styles.service_des}`} id="userName" placeholder={serviceDes} />
                     </div>
                 </div>
             </div>
@@ -84,41 +105,50 @@ export const AddService = () => {
                 <label className={styles.labelName} htmlFor="usedService">Quy tắc cấp số: </label>
                 <div className={styles.ruleNumber}>
                     <div className={`form-check ${styles.boxChecked}`}>
-                        <input className={`form-check-input ${styles.customChecked}`} type="checkbox" id="flexCheckDefault" />
+                        <input className={`form-check-input ${styles.customChecked}`} checked={serviceIncreaseFrom !== "" && serviceIncreaseTo !== ""} type="checkbox" id="flexCheckDefault" />
                         <label className={`form-check-label ${styles.titleLabel}`} htmlFor="flexCheckDefault">
                             Tăng tự động từ:
                         </label>
                     </div>
                     <div className={styles.boxChecked1}>
                         <div className={styles.rangeTitle}>
-                            <input type="number" onChange={handleFromChange} placeholder='0001'/>
+                            <input type="number" onChange={handleFromChange} placeholder={serviceIncreaseFrom || '0001'}/>
                         </div>
                         <p className={styles.titleBox1}>đến</p>
                         <div className={styles.rangeTitle}>
-                            <input type="number" onChange={handleToChange} placeholder='0001' max='9999'/>
+                            <input type="number" onChange={handleToChange} placeholder={serviceIncreaseTo || '0009'} max='9999'/>
                         </div>
                     </div>
                 </div>
                 <div className={styles.ruleNumber}>
                     <div className={`form-check ${styles.boxChecked}`}>
-                        <input className={`form-check-input ${styles.customChecked}`} type="checkbox" id="flexCheckDefault" />
+                        <input className={`form-check-input ${styles.customChecked}`} checked={preFix !== 0} type="checkbox" id="flexCheckDefault" />
                         <label className={`form-check-label ${styles.titleLabel}`} htmlFor="flexCheckDefault">
                             Prefix
                         </label>
                     </div>
-                      <div className={styles.rangeTitle}>
-                        <input onChange={(e) => setPrefix(Number(e.target.value))} type="number" placeholder='0001' max='9999' />
+                    <div className={styles.rangeTitle}>
+                    <input
+                        type="number"
+                        placeholder={preFix === 0 ? '0001' : preFix.toString()}
+                        max='9999'
+                    />
                     </div>
                 </div>
                 <div className={styles.ruleNumber}>
                     <div className={`form-check ${styles.boxChecked}`}>
-                        <input className={`form-check-input ${styles.customChecked}`} type="checkbox" id="flexCheckDefault" />
+                        <input className={`form-check-input ${styles.customChecked}`} checked={surFix !== 0} type="checkbox" id="flexCheckDefault" />
                         <label className={`form-check-label ${styles.titleLabel}`} htmlFor="flexCheckDefault">
                             Surfix
                         </label>
                     </div>
                     <div className={styles.rangeTitle}>
-                        <input onChange={(e) => setSurfix(Number(e.target.value))} type="number" placeholder='0001' min='0' max='9999'/>
+                    <input
+                        type="number"
+                        placeholder={surFix === 0 ? '0001' : surFix.toString()}
+                        min='0'
+                        max='9999'
+                    />
                     </div>
                 </div>
                 <div className={styles.ruleNumber}>
@@ -134,7 +164,7 @@ export const AddService = () => {
         </div>
         <div className={styles.btnActions}>
             <button className={styles.cancel}>Hủy bỏ</button>
-            <button className={styles.addItem} onClick={addService}>Thêm dịch vụ</button>
+            <button className={styles.addItem} onClick={() => {update()}}>Cập nhật dịch vụ</button>
         </div>
     </div>
     </Fragment>

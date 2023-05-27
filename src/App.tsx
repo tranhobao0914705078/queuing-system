@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { getDatabase, ref, child, get } from "firebase/database";
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams  } from 'react-router-dom';
 
 import './Styles/sb-admin-2.min.css'
 import { Login } from 'Pages/Account';
@@ -13,22 +13,17 @@ import { ResetPassword } from 'Pages/Account/ResetPassword/ResetPassword';
 
 import { publicRoutes } from './Pages/routes';
 import  DefaultLayout  from './Pages/Admin/DefaultLayout';
-function App() {
-  // const dbRef = ref(database);
-  // get(child(dbRef, `Device`)).then((snapshot) => {
-  //   if (snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("No data available");
-  //   }
-  // }).catch((error) => {
-  //   console.error(error);
-  // });
+import { UpdateItem } from 'Pages/Admin/Device/UpdateItem';
 
+interface UpdateItemProps {
+  device_code: string | undefined;
+}
+
+function App() {
+  
   useEffect(() => {
     document.title = 'Queuing System';
   }, []);
-  
   return (
     <div className='App' id="wrapper">
        <Router>

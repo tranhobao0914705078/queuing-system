@@ -174,7 +174,7 @@
     margin: 0 5px;
 }
 
-.rangeTitle{
+.rangeTitle input{
     margin: 10px 20px;
     width: 61px;
     height: 44px;   
@@ -185,7 +185,7 @@
     padding: 8px 0;
 }
 
-.rangeTitle p{
+.rangeTitle input{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 400;

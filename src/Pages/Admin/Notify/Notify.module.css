@@ -1,3 +1,7 @@
+.wrapper{
+    z-index: 99999999;
+}
+
 .userNotify{
     margin: 0 10px;
 }

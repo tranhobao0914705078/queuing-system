@@ -159,6 +159,7 @@ tr:nth-child(2n) {
 
 .status{
     display: flex;
+    margin: 10px 0;
 }
 
 .actionsSuccess{

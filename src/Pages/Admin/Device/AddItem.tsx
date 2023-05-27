@@ -14,20 +14,35 @@ export const AddItem = () => {
     const [deviceUsedService, setDeviceUsedService] = useState("");
     const [deviceActive, setDeviceActive] = useState(0);
     const [deviceConnect, setDeviceConnect] = useState(0);
+    const [selectType, setSelectType] = useState(0);
     const colRef = collection(db, "Devices");
     const navigate = useNavigate();
+
+    const handleChange = (newValue: string | null) => {
+        if (newValue) {
+            const parseNewValue = parseInt(newValue, 10);
+            // console.log(parseNewValue);
+            setSelectType(parseNewValue);
+        }
+    }
+
     const createDevice = async () => {
-        await addDoc(colRef, 
-            {
-                device_code: deviceCode, 
-                device_name: deviceName, 
-                device_ipaddress: deviceIPAddress, 
-                device_usedservice: deviceUsedService,
-                device_active: deviceActive,
-                device_connect: deviceConnect
-            }
-        )
-        navigate('/device');
+        if(deviceCode === "" || deviceName === "" || deviceIPAddress === "" || deviceUsedService === ""){
+            alert("Vui lòng nhập đủ thông tin các trường!!!");
+        }else{
+            await addDoc(colRef, 
+                {
+                    device_code: deviceCode, 
+                    device_name: deviceName, 
+                    device_ipaddress: deviceIPAddress, 
+                    device_usedservice: deviceUsedService,
+                    device_active: deviceActive,
+                    device_type: selectType,
+                    device_connect: deviceConnect
+                }
+            )
+            navigate('/device');
+        }
     }
   return (
     <Fragment>
@@ -62,7 +77,7 @@ export const AddItem = () => {
                 <div className={styles.inputRight}>
                     <div className="form-group">
                         <label className={styles.labelName} htmlFor="typeDevice">Loại thiết bị: <span>*</span></label>
-                        <CustomSelectType />
+                        <CustomSelectType onChange={handleChange}/>
                     </div>
                     <div className="form-group">
                         <label className={styles.labelName} style={{width: '200px'}} htmlFor="userName">Tên đăng nhập: <span>*</span></label>

@@ -5,10 +5,10 @@ import styles from './ServiceName.module.css'
 
 type StateManagedSelect = { value: string; label: string };
 const options = [
-  { value: '', label: 'Tất cả' },
-  { value: 'option2', label: 'Khám sản - Phụ khoa' },
-  { value: 'option3', label: 'Khám răng hàm mặt' },
-  { value: 'option4', label: 'Khám tai muĩ họng' }
+  { value: '0', label: 'Tất cả' },
+  { value: '1', label: 'Khám sản - Phụ khoa' },
+  { value: '2', label: 'Khám răng hàm mặt' },
+  { value: '3', label: 'Khám tai muĩ họng' }
 ];
 
 const customStyles = {
@@ -25,18 +25,22 @@ const customStyles = {
     color: '#000'
   }),
 };
+type ServiceProps = {
+  onChange: (newValue: string | null) => void;
+};
+const ServiceName: React.FC<ServiceProps> = ({ onChange }) => {
+  const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
 
-const ServiceName = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(options[0]);
-
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
-    };
+  const handleChange = (newValue: StateManagedSelect | null) => {
+    setSelectedOption(newValue);
+    onChange(newValue ? newValue.value : null);
+  };
 
     return (
         <div className={styles.box}>
             <h2 className={styles.title}>Tên dịch vụ</h2>
             <Select
+                placeholder = 'Tất cả'
                 value={selectedOption}
                 onChange={handleChange}
                 options={options}

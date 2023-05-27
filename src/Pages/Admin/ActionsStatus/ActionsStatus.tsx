@@ -5,10 +5,10 @@ import styles from './ActionsStatus.module.css'
 
 type StateManagedSelect = { value: string; label: string };
 const options = [
-  { value: '', label: 'Tất cả' },
-  { value: 'option2', label: 'Đang chờ' },
-  { value: 'option3', label: 'Đã sử dụng' },
-  { value: 'option4', label: 'Bỏ qua' }
+  { value: '0', label: 'Tất cả' },
+  { value: '1', label: 'Đang chờ' },
+  { value: '2', label: 'Đã sử dụng' },
+  { value: '3', label: 'Bỏ qua' }
 ];
 
 const customStyles = {
@@ -25,18 +25,23 @@ const customStyles = {
     color: '#000'
   }),
 };
+type StatusProps = {
+  onChange: (newValue: string | null) => void;
+};
 
-const ActionsStatus = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(options[0]);
+const ActionsStatus: React.FC<StatusProps> = ({ onChange }) => {
+  const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
 
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
+    const handleChange = (newValue: StateManagedSelect | null) => {
+      setSelectedOption(newValue);
+      onChange(newValue ? newValue.value : null);
     };
 
     return (
         <div className={styles.box}>
             <h2 className={styles.title}>Tình trạng</h2>
             <Select
+                placeholder = 'Tất cả'
                 value={selectedOption}
                 onChange={handleChange}
                 options={options}

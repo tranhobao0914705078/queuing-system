@@ -5,8 +5,8 @@ import styles from './TypeDevice.module.css'
 
 type StateManagedSelect = { value: string; label: string };
 const options = [
-  { value: 'option1', label: 'Kiosk' },
-  { value: 'option2', label: 'Display counter' }
+  { value: '1', label: 'Kiosk' },
+  { value: '2', label: 'Display counter' }
 ];
 
 const customStyles = {
@@ -24,10 +24,16 @@ const customStyles = {
   }),
 };
 
-const CustomSelectType = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(null);
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
+type TypeProps = {
+  onChange: (newValue: string | null) => void;
+};
+
+const CustomSelectType: React.FC<TypeProps> = ({ onChange }) => {
+    const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
+
+    const handleChange = (newValue: StateManagedSelect | null) => {
+      setSelectedOption(newValue);
+      onChange(newValue ? newValue.value : null);
     };
 
     return (

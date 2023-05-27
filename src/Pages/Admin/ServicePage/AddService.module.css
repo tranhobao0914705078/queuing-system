@@ -161,6 +161,10 @@
     height: 126px;
 }
 
+.inputRight textarea{
+    height: 130px;
+}
+
 .form-control::placeholder {
     color: red;
 }
@@ -170,7 +174,7 @@
     display: flex;
 }
 
-.rangeTitle{
+.rangeTitle input{
     margin: 10px 20px;
     width: 61px;
     height: 44px;   
@@ -181,7 +185,7 @@
     padding: 8px 0;
 }
 
-.rangeTitle p{
+.rangeTitle input{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 400;

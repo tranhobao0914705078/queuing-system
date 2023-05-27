@@ -141,10 +141,10 @@
 
 .service{
     position: absolute;
-    width: 1104px;
-    height: 80px;
-    background: #FFFFFF;
+    width: 1134px;
+    padding: 0 10px;
     border: 1.5px solid #FFAC6A;
+    height: 80px;
     border-radius: 8px;
 }
 
@@ -169,4 +169,38 @@
     line-height: 24px;
     display: flex;
     color: #282739;
+}
+
+.Tag{
+    display: flex;
+    padding: 3px 10px;
+    text-align: left;
+    margin: 10px 10px;
+    width: 180px;
+    height: 28px;
+    background: #FFAC6A;
+    box-shadow: 0px 0px 6px #E7E9F2;
+    border-radius: 9px;
+}
+
+.Tag p{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.Tag span{
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 140px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #FFF;
+    position: absolute;
+}
+
+.Tag span:hover{
+    opacity: 0.8;
 }

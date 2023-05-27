@@ -5,9 +5,9 @@ import styles from './ConnecCondition.module.css'
 
 type StateManagedSelect = { value: string; label: string };
 const options = [
-  { value: '', label: 'Tất cả' },
-  { value: 'option2', label: 'Kết nối' },
-  { value: 'option3', label: 'Mất kết nối' }
+  { value: '0', label: 'Tất cả' },
+  { value: '1', label: 'Kết nối' },
+  { value: '2', label: 'Mất kết nối' }
 ];
 
 const customStyles = {
@@ -25,18 +25,25 @@ const customStyles = {
   }),
 };
 
-const CustomSelectConnect = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(options[0]);
+type ConnectProps = {
+  onChange: (newValue: string | null) => void;
+};
 
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
+const CustomSelectConnect: React.FC<ConnectProps> = ({ onChange }) => {
+    const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
+
+    const handleChange = (newValue: StateManagedSelect | null) => {
+      setSelectedOption(newValue);
+      onChange(newValue ? newValue.value : null);
     };
+
 
     return (
         <div className={styles.box}>
             <h2 className={styles.title}>Trạng thái kết nối</h2>
             <Select
                 value={selectedOption}
+                placeholder="Tất cả"
                 onChange={handleChange}
                 options={options}
                 styles={customStyles}

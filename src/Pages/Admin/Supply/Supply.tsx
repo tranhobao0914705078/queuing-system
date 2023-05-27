@@ -5,9 +5,9 @@ import styles from './Supply.module.css'
 
 type StateManagedSelect = { value: string; label: string };
 const options = [
-  { value: '', label: 'Tất cả' },
-  { value: 'option2', label: 'Kiosk' },
-  { value: 'option3', label: 'Hệ thống' }
+  { value: '0', label: 'Tất cả' },
+  { value: '1', label: 'Kiosk' },
+  { value: '2', label: 'Hệ thống' }
 ];
 
 const customStyles = {
@@ -25,17 +25,23 @@ const customStyles = {
   }),
 };
 
-const Supply = () => {
-    const [selectedOption, setSelectedOption] = useState<SingleValue<StateManagedSelect>>(options[0]);
+type SupplyProps = {
+  onChange: (newValue: string | null) => void;
+}
 
-    const handleChange = (newValue: SingleValue<StateManagedSelect>, actionMeta: ActionMeta<StateManagedSelect>) => {
-        setSelectedOption(newValue);
+const Supply: React.FC<SupplyProps> = ({onChange}) => {
+    const [selectedOption, setSelectedOption] = useState<StateManagedSelect | null>(null);
+
+    const handleChange = (newValue: StateManagedSelect | null) => {
+      setSelectedOption(newValue);
+      onChange(newValue ? newValue.value : null);
     };
 
     return (
         <div className={styles.box}>
             <h2 className={styles.title}>Nguồn cấp</h2>
             <Select
+                placeholder = 'Tất cả'
                 value={selectedOption}
                 onChange={handleChange}
                 options={options}

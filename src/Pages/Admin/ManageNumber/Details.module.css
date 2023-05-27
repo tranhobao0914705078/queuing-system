@@ -244,3 +244,11 @@
     background-color: #4277FF;
     margin: 6px 10px;
 }
+
+.actionsUsed{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7E7D88;
+    margin: 6px 10px;
+}

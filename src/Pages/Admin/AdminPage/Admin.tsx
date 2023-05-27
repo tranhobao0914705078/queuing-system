@@ -9,7 +9,7 @@ import { Wrapper } from '../Popper';
 import MenuSetting from '../Popper/Menu';
 import { Link, useLocation } from 'react-router-dom';
 import { Notify } from '../Notify/Notify';
-import { onAuthStateChanged, signInWithEmailAndPassword, User, signOut } from 'firebase/auth';
+import { onAuthStateChanged, User, signOut } from 'firebase/auth';
 import { auth } from 'firebase-config/firebase';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,23 +30,20 @@ const MENU_SETTING = [
 ]
 export const Admin = () => {
   const [activeItem, setActiveItem] = useState<string>('Dashboard');
-  // const handleItemClick = (item: string) => {
-  //   setActiveItem(item);
-  // };
   const location = useLocation();
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-    
-        return () => {
-          unsubscribe();
-        };
-      }, []);
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          setUser(currentUser);
+      });
+
+      return () => {
+        unsubscribe();
+      };
+    }, []);
     
 
     const handleLogOut = async () => {

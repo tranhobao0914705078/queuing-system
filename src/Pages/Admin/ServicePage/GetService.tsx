@@ -1,37 +1,58 @@
 import React, { useState, useEffect } from 'react'
 import styles from'./ListService.module.css';
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { DocumentData, Query, collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
 import { db } from 'firebase-config/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import CustomSelect from '../ActiceStatus/ActiveCondition';
 import CustomSelectConnect from '../ConnectStatus/ConnecCondition';
 import { CalendarCustom as CustomCalendar } from '../CustomCalender/CustomCalendar';
+import { Link } from 'react-router-dom';
 
 export const GetService = () => {
     const [serviceList, setServiceList] = useState<any>([]);
-    const [filterSerivce, setFilterService] = useState();
+    const [filterSerivce, setFilterService] = useState("");
+    const [selectActive, setSelectActive] = useState(0);
 
     useEffect(() => {
         const colRef = collection(db, 'Service');
-        const newRef = filterSerivce ? query(colRef, where("service_code", "==", filterSerivce)) : colRef;
+        let newRef: Query<DocumentData> = colRef;
+        if(filterSerivce && selectActive !== 0){
+          newRef = query (colRef, 
+              where('service_status', '==', selectActive),
+              where('service_code', '==', filterSerivce)
+            );
+        }else if(filterSerivce){
+          newRef = query(colRef, where('service_code', '==', filterSerivce))
+        }else if(selectActive !== 0){
+          newRef = query(colRef, where('service_status', '==', selectActive))
+        }
         onSnapshot(newRef, (snapshot) => {
-            const result: any[] = [];
-            snapshot.forEach((doc) => {
-                result.push({
-                id: doc.id,
-                ...doc.data(),
-                });
+          const results: any[] = [];
+          snapshot.forEach((doc) => {
+            results.push({
+            id: doc.id,
+            ...doc.data(),
             });
-            setServiceList(result);
+          });
+          setServiceList(results);
         })
-    }, [filterSerivce])
+    }, [filterSerivce, selectActive])
+
+    const handleChange = (newValue: string | null) => {
+      if(newValue){
+          const parseNewValue = parseInt(newValue, 10);
+          console.log(parseNewValue);
+          setSelectActive(parseNewValue);
+      }
+    }
+    
   return (
     <div>
         <div className={styles.headerOptions}>
           <div className={styles.options}>
-            <CustomSelect />
+            <CustomSelect onChange={handleChange}/>
             <h2 className={styles.titleTime}>Chọn thời gian</h2>
             <CustomCalendar />
             <FontAwesomeIcon icon={faCaretRight} className={styles.iconCaret}/>
@@ -39,7 +60,7 @@ export const GetService = () => {
           </div>
           <div className={styles.box}>
             <h2 className={styles.title}>Trạng thái hoạt động</h2>
-            <input type="text" className={styles.inputSearch} placeholder='Nhập từ khóa'/>
+            <input type="text" onChange={(e) => setFilterService(e.target.value)} className={styles.inputSearch} placeholder='Nhập từ khóa'/>
             <FontAwesomeIcon  icon={faSearch} className={styles.iconSearch}/>
           </div>
         </div>
@@ -74,8 +95,8 @@ export const GetService = () => {
                         {service.service_status === 1 ? "Hoạt động" : "Ngưng hoạt động"}
                     </p>
                 </td>
-                <td className={styles.link}><a href="">Chi tiết</a></td>
-                <td className={styles.linkUpdate}><a href="">Cập nhật</a></td>
+                <td className={styles.link}><Link to={`/detail-service/${service.id}`}>Chi tiết</Link></td>
+                <td className={styles.linkUpdate}><Link to={`/update-service/${service.id}`}>Cập Nhật</Link></td>
               </tr>
             ))}
           </tbody>

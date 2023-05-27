@@ -2,13 +2,14 @@ import { Admin } from '../Admin/AdminPage/Admin';
 import { Device } from 'Pages/Admin/Device/Device';
 import { Information } from 'Pages/Admin/Information/Information';
 import { Dashboard } from 'Pages/Admin/Dashboard/Dashboard';
-import { ManageItem } from 'Pages/Admin/Device/ManageItem';
+import { UpdateItem } from 'Pages/Admin/Device/UpdateItem';
 import { ListService } from 'Pages/Admin/ServicePage/ListService';
 import { Report } from 'Pages/Admin/Report/Report';
 
 import { AddItem } from 'Pages/Admin/Device/AddItem';
 import { DetailsDevice } from 'Pages/Admin/Device/DetailsDevice';
 import { AddService } from 'Pages/Admin/ServicePage/AddService';
+import { UpdateService } from 'Pages/Admin/ServicePage/UpdateService';
 import { DetailService } from 'Pages/Admin/ServicePage/DetailService';
 import { ManageNumber } from 'Pages/Admin/ManageNumber/ManageNumber';
 import { NewNumber } from 'Pages/Admin/NewNumber/NewNumber';
@@ -18,7 +19,8 @@ import { AddAccount } from 'Pages/Admin/ManageAccount/AddAccount';
 import { UpdateAccount } from 'Pages/Admin/ManageAccount/UpdateAccount';
 import { MemoryUser } from 'Pages/Admin/MemoryUser/MemoryUser';
 import { ManageRole } from 'Pages/Admin/ManageRole/ManageRole';
-import { ListRole } from 'Pages/Admin/ManageRole/ListRole';
+import { ListRole } from 'Pages/Admin/ManageRole/AddRole';
+import { UpdateRole } from 'Pages/Admin/ManageRole/UpdateRole';
 
 const publicRoutes = [
     {
@@ -34,12 +36,12 @@ const publicRoutes = [
         component: AddItem,
     },
     {
-        path: '/details-device',
+        path: '/details-device/:id',
         component: DetailsDevice,
     },
     {
-        path: '/manage-device',
-        component: ManageItem,
+        path: '/update-device/:id',
+        component: UpdateItem,
     },
     {
         path: '/manage-service',
@@ -50,8 +52,12 @@ const publicRoutes = [
         component: AddService,
     },
     {
-        path: '/detail-service',
+        path: '/detail-service/:id',
         component: DetailService,
+    },
+    {
+        path: '/update-service/:id',
+        component: UpdateService,
     },
     {
         path: '/manage-number',
@@ -62,7 +68,7 @@ const publicRoutes = [
         component: NewNumber,
     },
     {
-        path: '/details-number',
+        path: '/details-number/:id',
         component: Details
     },
     {
@@ -78,7 +84,7 @@ const publicRoutes = [
         component: AddAccount,
     },
     {
-        path: '/update-account',
+        path: '/update-account/:id',
         component: UpdateAccount,
     },
     {
@@ -92,6 +98,10 @@ const publicRoutes = [
     {
         path: '/add-role',
         component: ListRole,
+    },
+    {
+        path: '/update-role/:id',
+        component: UpdateRole,
     },
     {
         path: '/dashboard',
